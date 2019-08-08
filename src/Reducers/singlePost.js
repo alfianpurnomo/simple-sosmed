@@ -8,6 +8,7 @@ import {
   CREATE_SINGLE_POST_FAILURE,
   CLEAR_SINGLE_POST,
 } from '../_Actions/singelPost'
+import { ADD_COMMENT_SUCCESS } from '../_Actions/addComment';
 
 export const initialState = {
   open: false,
@@ -45,6 +46,15 @@ const singlePostReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
+        loading: false,
+      }
+    case ADD_COMMENT_SUCCESS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          comments:[...state.data.comments,action.payload]
+        },
         loading: false,
       }
     case CREATE_SINGLE_POST_FAILURE:

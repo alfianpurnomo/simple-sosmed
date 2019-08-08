@@ -2,6 +2,7 @@ import { combineEpics } from 'redux-observable'
 import fetchUserEpic from './user'
 import fetchPostEpic from './post'
 import {
+  fetchCommentPost,
   openModalPostEpic,
   fetchSinglePostEpic,
   createSinglePostEpic,
@@ -15,6 +16,7 @@ import {
 
 export const rootEpic = combineEpics(
   fetchUserEpic,
+  fetchCommentPost,
   fetchPostEpic,
   openModalPostEpic,
   fetchSinglePostEpic,

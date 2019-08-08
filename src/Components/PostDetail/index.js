@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 import { Modal } from 'react-bootstrap'
 
-import { openModal } from '../../actions/singlePost'
+import { openModal } from '../../_Actions/singelPost'
+import { addComment } from '../../_Actions/addComment'
 
 import Comment from '../Comment/'
 import CommentForm from '../Comment/Form/'
@@ -13,6 +14,7 @@ import PostLoader from '../Loader/PostLoader'
 const PostDetail = ({
   singlePost,
   openModal,
+  addComment
 }) => (
   <Modal
     id="post-detail"
@@ -45,8 +47,9 @@ const PostDetail = ({
           </p>
         </Modal.Body>
         <Modal.Footer className="flex-column">
-          <CommentForm />
+          <CommentForm actionAddComment={addComment}/>
           <hr className="w-100 mb-0 mt-4" />
+          {console.log(singlePost.data)}
           {singlePost.data.comments.map(comment => (
             <Comment key={comment.id} {...comment} />
           ))}
@@ -60,7 +63,8 @@ const mapStateToProps = state => ({ ...state })
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
-    openModal
+    openModal,
+    addComment
   }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)

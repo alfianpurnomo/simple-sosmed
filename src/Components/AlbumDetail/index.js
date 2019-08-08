@@ -7,7 +7,7 @@ import ImageGallery from 'react-image-gallery';
 import {
   openModal as openAlbumModal,
   clearSingleAlbum
-} from '../../actions/album'
+} from '../../_Actions/album'
 
 import PostLoader from '../Loader/PostLoader'
 import img from '../../assets/images/placeholder.png'

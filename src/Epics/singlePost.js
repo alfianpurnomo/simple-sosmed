@@ -1,4 +1,4 @@
-import { of } from 'rxjs'
+import { from,of } from 'rxjs'
 import { takeUntil, mergeMap, map, catchError } from 'rxjs/operators'
 
 import {
@@ -11,9 +11,43 @@ import {
   fetchSinglePostFailure,
   createSinglePostSuccess,
   createSinglePostFailure,
-  clearSinglePost
+  clearSinglePost,
+  
 } from "../_Actions/singelPost"
 import storage from '../_Config/Storage'
+import {
+  ADD_COMMENT,
+  ADD_COMMENT_SUCCESS,
+  ADD_COMMENT_FAILURE,
+  addComment,
+  addCommentSuccess,
+  addCommenrFailure
+} from '../_Actions/addComment'
+
+export const fetchCommentPost = (action$, state$, { post$ }) => {
+  return action$
+    .ofType(ADD_COMMENT)
+    .pipe(
+      mergeMap(action => post$('/comments',action.payload).pipe(
+        mergeMap(response => {
+              
+              let dataComment = {
+                body:response.data.message,
+                email:response.data.email,
+                name:response.data.name,
+                id:Math.floor(Math.random()*(999-100+1)+100),
+                postId:state$.value.singlePost.data.id
+              }
+              return of(addCommentSuccess(dataComment));
+               
+        }),
+        catchError(error => {
+          //console.log(error)
+          return of(addCommenrFailure('Cannot add comment, please try again :)'))
+        })
+      ))
+    )
+}
 
 export const openModalPostEpic = action$ => action$.ofType(OPEN_MODAL).pipe(
   map(action => typeof action.postId !== 'undefined' && action.open !== false
