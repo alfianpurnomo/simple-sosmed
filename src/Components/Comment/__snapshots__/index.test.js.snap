@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render <Comment /> correctly 1`] = `
+<ForwardRef(Bootstrap(Row))
+  className="comment w-100 m-0 mt-3 mb-2"
+>
+  <ForwardRef(Bootstrap(Col))
+    className="p-0 pl-2 d-flex flex-column align-items-start"
+  >
+    <p
+      className="mb-1"
+    >
+      <b />
+       
+      <span
+        className="comment__email"
+      >
+        - 
+      </span>
+    </p>
+    <p
+      className="comment__body"
+    />
+  </ForwardRef(Bootstrap(Col))>
+</ForwardRef(Bootstrap(Row))>
+`;
+
+exports[`render <CommentForm /> correctly 1`] = `
+<ForwardRef(Bootstrap(FormRow))
+  className="w-100 m-0"
+>
+  <ForwardRef(Bootstrap(Col))
+    md={9}
+  >
+    <ForwardRef(Bootstrap(FormRow))
+      className="mb-2"
+    >
+      <ForwardRef(Bootstrap(Col))>
+        <ForwardRef(ContextTransform)
+          placeholder="Name"
+          type="text"
+        />
+      </ForwardRef(Bootstrap(Col))>
+      <ForwardRef(Bootstrap(Col))>
+        <ForwardRef(ContextTransform)
+          placeholder="Email"
+          type="email"
+        />
+      </ForwardRef(Bootstrap(Col))>
+    </ForwardRef(Bootstrap(FormRow))>
+    <ForwardRef(ContextTransform)
+      placeholder="Write comment . . ."
+      type="text"
+    />
+  </ForwardRef(Bootstrap(Col))>
+  <ForwardRef(Bootstrap(Col))
+    className="d-flex align-items-center"
+  >
+    <ForwardRef(Bootstrap(Button))
+      className="w-100 h-100"
+      type="submit"
+      variant="outline-primary"
+    >
+      Send
+    </ForwardRef(Bootstrap(Button))>
+  </ForwardRef(Bootstrap(Col))>
+</ForwardRef(Bootstrap(FormRow))>
+`;

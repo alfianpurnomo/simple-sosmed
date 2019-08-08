@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render <Profile /> correctly 1`] = `
+<Card
+  align="left"
+>
+  <div
+    className="mx-auto mb-2 d-flex flex-column align-items-center"
+  >
+    <withAvatarConfig
+      className="profile-card__avatar"
+      name="Guest"
+      round={true}
+      size="70px"
+    />
+    <h4>
+      Guest
+    </h4>
+    <p
+      className="profile-card__username"
+    >
+      @
+      guest
+    </p>
+  </div>
+  <b
+    className="mt-2 mx-auto"
+  >
+    Address
+  </b>
+  <b
+    className="mt-2 mx-auto"
+  >
+    Company
+  </b>
+  <UserAttribute
+    key="name"
+    label="name"
+    value="Romaguera-Crona"
+  />
+  <UserAttribute
+    key="catchPhrase"
+    label="catchPhrase"
+    value="Multi-layered client-server neural-net"
+  />
+  <UserAttribute
+    key="bs"
+    label="bs"
+    value="harness real-time e-markets"
+  />
+</Card>
+`;
