@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 
-import { openModal } from '../../../actions/singlePost'
+import { openModal } from '../../../_Actions/singelPost'
 import './style.scss'
 
 const Post = ({author, id, title, body, openModal, ...props}) => {

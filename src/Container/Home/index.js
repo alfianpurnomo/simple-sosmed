@@ -4,22 +4,22 @@ import { bindActionCreators } from 'redux'
 import { Container, Row, Col } from 'react-bootstrap'
 
 import withNavbar from '../../Hoc/withNavbar'
-// import Protected from '../../components/Protected/'
-// import Card from '../../components/Card/'
+//import Protected from '../../components/Protected/'
+import Card from '../../Components/Card/'
 // import PostForm from '../../components/PostForm/'
-// import Post from '../../components/Card/Post/'
+import Post from '../../Components/Card/Post/'
 // import PostDetail from '../../components/PostDetail/'
 // import Footer from '../../components/Footer/'
-// import PostLoader from '../../components/Loader/PostLoader'
+import PostLoader from '../../Components/Loader/PostLoader'
 
-// import { fetchPost } from '../../actions/post'
-// import { openModal } from '../../actions/singlePost'
+import { fetchPost } from '../../_Actions/post'
+import { openModal } from '../../_Actions/singelPost'
 
 class Home extends Component {
-  // componentDidMount() {
-  //   const { fetchPost, post } = this.props
-  //   if (post.data.length === 0) fetchPost()
-  // }
+  componentDidMount() {
+    const { fetchPost, post } = this.props
+    if (post.data.length === 0) fetchPost()
+  }
 
   // componentWillUnmount() {
   //   this.props.openModal(false)
@@ -33,7 +33,13 @@ class Home extends Component {
         <Container>
           <Row>
             <Col md={8}>
-              
+              <Card>
+                {post.loading && <PostLoader repeat={3} />}
+                {post.error && <h3>{post.error}</h3>}
+                {post.data.map((data, index) => (
+                  <Post key={index} author={data.user} {...data} />
+                ))}
+              </Card>
             </Col>
             <Col md={4}>
               
@@ -47,14 +53,12 @@ class Home extends Component {
   }
 }
 
-// const mapStateToProps = state => ({ ...state })
+const mapStateToProps = state => ({ ...state })
 
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators({
-//     fetchPost,
-//     openModal
-//   }, dispatch)
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({
+    fetchPost,
+    openModal
+  }, dispatch)
 
-// export default connect(mapStateToProps, mapDispatchToProps)(withNavbar(Home))
-
-export default withNavbar(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withNavbar(Home))

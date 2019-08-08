@@ -6,7 +6,7 @@ import 'react-image-gallery/styles/css/image-gallery.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import {store} from './_Config/Store';
+import store from './_Config/Store';
 
 ReactDOM.render(
   <Provider store={store}>
