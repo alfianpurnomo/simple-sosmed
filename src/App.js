@@ -5,6 +5,8 @@ import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 import Home from './Container/Home';
+import Users from './Container/Users';
+import Profile from './Container/Profile';
 import { history } from './_Config/History';
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
               <section>
                 <Switch>
                   <Route exact path="/" component={Home} />
+                  <Route exact path="/users" component={Users} />
+                  <Route path="/users/:id" component={Profile} />
                 </Switch>
               </section>
             </div>
