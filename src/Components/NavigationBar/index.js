@@ -70,26 +70,7 @@ class NavigationBar extends Component {
               <MdGroup className="mr-sm-1" /> Users
             </Link>
           </Nav>
-          <Nav className="ml-auto">
-            <Protected
-              alternative={
-                <Link to="/login" className={"nav-link nav-link__menu"}>
-                  Login
-                </Link>
-              }
-            >
-              <Dropdown>
-                <Dropdown.Toggle as={ProfileMenu} id="profile-menu">
-                  {authenticatedUser.name} <MdKeyboardArrowDown />
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item as={ProfileMenuItem}>Profile</Dropdown.Item>
-                  <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Protected>
-          </Nav>
+          
         </Container>
       </Navbar>
     )
