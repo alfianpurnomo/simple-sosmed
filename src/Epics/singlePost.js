@@ -22,7 +22,7 @@ import {
   addComment,
   addCommentSuccess,
   addCommenrFailure
-} from '../_Actions/addComment'
+} from '../_Actions/comment'
 
 export const fetchCommentPost = (action$, state$, { post$ }) => {
   return action$

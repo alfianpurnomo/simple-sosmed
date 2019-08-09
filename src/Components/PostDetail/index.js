@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 import { Modal } from 'react-bootstrap'
 
 import { openModal } from '../../_Actions/singelPost'
-import { addComment } from '../../_Actions/addComment'
+import { addComment } from '../../_Actions/comment'
+import { deleteCommentSuccess } from '../../_Actions/comment'
 
 import Comment from '../Comment/'
 import CommentForm from '../Comment/Form/'
@@ -14,7 +15,8 @@ import PostLoader from '../Loader/PostLoader'
 const PostDetail = ({
   singlePost,
   openModal,
-  addComment
+  addComment,
+  deleteCommentSuccess
 }) => (
   <Modal
     id="post-detail"
@@ -49,9 +51,9 @@ const PostDetail = ({
         <Modal.Footer className="flex-column">
           <CommentForm actionAddComment={addComment}/>
           <hr className="w-100 mb-0 mt-4" />
-          {console.log(singlePost.data)}
+          
           {singlePost.data.comments.map(comment => (
-            <Comment key={comment.id} {...comment} />
+            <Comment actionDeleteComment={deleteCommentSuccess} key={comment.id} {...comment} />
           ))}
         </Modal.Footer>
       </>
@@ -64,7 +66,8 @@ const mapStateToProps = state => ({ ...state })
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
     openModal,
-    addComment
+    addComment,
+    deleteCommentSuccess
   }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)

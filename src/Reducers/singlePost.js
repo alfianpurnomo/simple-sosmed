@@ -8,7 +8,7 @@ import {
   CREATE_SINGLE_POST_FAILURE,
   CLEAR_SINGLE_POST,
 } from '../_Actions/singelPost'
-import { ADD_COMMENT_SUCCESS } from '../_Actions/addComment';
+import { ADD_COMMENT_SUCCESS,DELETE_COMMENT_SUCCESS } from '../_Actions/comment';
 
 export const initialState = {
   open: false,
@@ -57,6 +57,16 @@ const singlePostReducer = (state = initialState, action) => {
         },
         loading: false,
       }
+    case DELETE_COMMENT_SUCCESS:
+        
+        return {
+          ...state,
+          data: {
+            ...state.data,
+            comments:[...state.data.comments.filter(comment => comment.id!==action.payload)]
+          },
+          loading: false,
+        }
     case CREATE_SINGLE_POST_FAILURE:
     case FETCH_SINGLE_POST_FAILURE:
       return {

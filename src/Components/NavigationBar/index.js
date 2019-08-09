@@ -11,41 +11,18 @@ import {
 } from 'react-bootstrap'
 import {
   MdHome,
-  MdGroup,
-  MdKeyboardArrowDown
+  MdGroup
 } from "react-icons/md"
 
-import Protected from '../../Components/Protected/'
 import { logout } from '../../_Actions/Auth'
-import storage from '../../_Config/Storage'
 import './style.scss'
 
-class ProfileMenu extends Component {
-  render() {
-    const { children, onClick } = this.props
 
-    return (
-      <span
-        id="menu"
-        onClick={onClick}
-        className="nav-link mr-sm-2"
-      >
-        {children}
-      </span>
-    )
-  }
-}
-
-const ProfileMenuItem = ({onClick, children}) => (
-  <Link to="/profile" onClick={onClick} className="dropdown-item">
-    {children}
-  </Link>
-)
 
 class NavigationBar extends Component {
   render() {
-    const { location, logout } = this.props
-    const authenticatedUser = JSON.parse(storage.get('user')) || {name: ''}
+    const { location, } = this.props
+    
 
     return (
       <Navbar bg="white" variant="light" className="my-navbar">
