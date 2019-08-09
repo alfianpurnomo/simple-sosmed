@@ -6,14 +6,16 @@ import classNames from 'classnames'
 import {
   Container,
   Nav,
-  Navbar
+  Navbar,
+  Dropdown
 } from 'react-bootstrap'
 import {
   MdHome,
   MdGroup,
-  
+  MdKeyboardArrowDown
 } from "react-icons/md"
 
+import Protected from '../../Components/Protected/'
 import { logout } from '../../_Actions/Auth'
 import storage from '../../_Config/Storage'
 import './style.scss'
@@ -68,7 +70,26 @@ class NavigationBar extends Component {
               <MdGroup className="mr-sm-1" /> Users
             </Link>
           </Nav>
-          
+          <Nav className="ml-auto">
+            <Protected
+              alternative={
+                <Link to="/login" className={"nav-link nav-link__menu"}>
+                  Login
+                </Link>
+              }
+            >
+              <Dropdown>
+                <Dropdown.Toggle as={ProfileMenu} id="profile-menu">
+                  {authenticatedUser.name} <MdKeyboardArrowDown />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item as={ProfileMenuItem}>Profile</Dropdown.Item>
+                  <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Protected>
+          </Nav>
         </Container>
       </Navbar>
     )
